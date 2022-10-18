@@ -72,15 +72,6 @@ jobs:
       - store_test_results:
           path: fastlane/test_output/report.junit
 
-  beta:
-    macos:
-      xcode: 13.4.1
-    resource_class: macos.x86.medium.gen2
-    steps:
-      - checkout
-      - ruby/install-deps
-      - run: bundle exec fastlane beta
-
 workflows:
   main:
     jobs:
@@ -90,6 +81,3 @@ workflows:
       - ui_test_parallel:
           requires:
             - build_for_ui_test
-      - beta:
-          context: # Context
-            - mobile
